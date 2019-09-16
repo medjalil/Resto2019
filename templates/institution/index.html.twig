@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Institution index{% endblock %}
+
+{% block body %}
+    <h1>institution index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ministory</th>
+            <th>Office</th>
+            <th>Name</th>
+            <th>Director</th>
+            <th>administrator</th>
+            <th>Economist</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Phone</th>
+            <th>Fax</th>
+
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for institution in institutions %}
+            <tr>
+                <td>{{ institution.id }}</td>
+                <td>{{ institution.ministry }}</td>
+                <td>{{ institution.office }}</td>
+                <td>{{ institution.name }}</td>
+                <td>{{ institution.director }}</td>
+                <td>{{ institution.administrator }}</td>
+                <td>{{ institution.economist }}</td>
+                <td>{{ institution.address }}</td>
+                <td>{{ institution.city }}</td>
+                <td>{{ institution.phone }}</td>
+                <td>{{ institution.fax }}</td>
+                <td>
+                    <a href="{{ path('institution_show', {'id': institution.id}) }}">show</a>
+                    <a href="{{ path('institution_edit', {'id': institution.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('institution_new') }}">Create new</a>
+{% endblock %}
