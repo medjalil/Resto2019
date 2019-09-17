@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Entity\Institution;
@@ -12,8 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/institution")
  */
-
-
 class InstitutionController extends AbstractController
 {
     /**
@@ -27,20 +26,22 @@ class InstitutionController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="institution_new",methods={"GET","POST"})
+     * @Route("/new", name="institution_new", methods={"GET","POST"})
      */
-
-    public function new(Request $request)
+    public function new(Request $request): Response
     {
         $institution = new Institution();
         $form = $this->createForm(InstitutionType::class, $institution);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($institution);
             $entityManager->flush();
+
             return $this->redirectToRoute('institution_index');
         }
+
         return $this->render('institution/new.html.twig', [
             'institution' => $institution,
             'form' => $form->createView(),
@@ -58,9 +59,8 @@ class InstitutionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="institution_edit", methods={"Get","POST"})
+     * @Route("/{id}/edit", name="institution_edit", methods={"GET","POST"})
      */
-
     public function edit(Request $request, Institution $institution): Response
     {
         $form = $this->createForm(InstitutionType::class, $institution);
@@ -71,9 +71,10 @@ class InstitutionController extends AbstractController
 
             return $this->redirectToRoute('institution_index');
         }
+
         return $this->render('institution/edit.html.twig', [
             'institution' => $institution,
-            'form' => $form->createVieww(),
+            'form' => $form->createView(),
         ]);
     }
 
@@ -82,11 +83,12 @@ class InstitutionController extends AbstractController
      */
     public function delete(Request $request, Institution $institution): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $institution->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$institution->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($institution);
             $entityManager->flush();
         }
+
         return $this->redirectToRoute('institution_index');
     }
 }

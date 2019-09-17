@@ -3,25 +3,24 @@
 {% block title %}Institution index{% endblock %}
 
 {% block body %}
-    <h1>institution index</h1>
+    <h1>Institution index</h1>
 
     <table class="table">
         <thead>
-        <tr>
-            <th>Id</th>
-            <th>Ministory</th>
-            <th>Office</th>
-            <th>Name</th>
-            <th>Director</th>
-            <th>administrator</th>
-            <th>Economist</th>
-            <th>Address</th>
-            <th>City</th>
-            <th>Phone</th>
-            <th>Fax</th>
-
-            <th>actions</th>
-        </tr>
+            <tr>
+                <th>Id</th>
+                <th>Ministry</th>
+                <th>Office</th>
+                <th>Name</th>
+                <th>Director</th>
+                <th>Economist</th>
+                <th>Administrator</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Phone</th>
+                <th>Fax</th>
+                <th>actions</th>
+            </tr>
         </thead>
         <tbody>
         {% for institution in institutions %}
@@ -31,8 +30,8 @@
                 <td>{{ institution.office }}</td>
                 <td>{{ institution.name }}</td>
                 <td>{{ institution.director }}</td>
-                <td>{{ institution.administrator }}</td>
                 <td>{{ institution.economist }}</td>
+                <td>{{ institution.administrator }}</td>
                 <td>{{ institution.address }}</td>
                 <td>{{ institution.city }}</td>
                 <td>{{ institution.phone }}</td>
@@ -44,7 +43,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="12">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

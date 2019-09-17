@@ -1,13 +1,14 @@
 <?php
+
 namespace App\Controller;
 
 use App\Entity\Budget;
-use  App\Form\BudgetType;
-use  App\Repository\BudgetRepository;
-use  Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\BudgetType;
+use App\Repository\BudgetRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use  Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/budget")
@@ -90,5 +91,4 @@ class BudgetController extends AbstractController
 
         return $this->redirectToRoute('budget_index');
     }
-
 }

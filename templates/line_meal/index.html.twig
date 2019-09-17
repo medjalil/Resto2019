@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LineMeal index{% endblock %}
+
+{% block body %}
+    <h1>LineMeal index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quantity</th>
+                <th>Unit_price</th>
+                <th>Tax</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for line_meal in line_meals %}
+            <tr>
+                <td>{{ line_meal.id }}</td>
+                <td>{{ line_meal.quantity }}</td>
+                <td>{{ line_meal.unitPrice }}</td>
+                <td>{{ line_meal.tax }}</td>
+                <td>
+                    <a href="{{ path('line_meal_show', {'id': line_meal.id}) }}">show</a>
+                    <a href="{{ path('line_meal_edit', {'id': line_meal.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('line_meal_new') }}">Create new</a>
+{% endblock %}

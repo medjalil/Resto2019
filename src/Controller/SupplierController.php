@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Entity\Supplier;
@@ -12,18 +13,18 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/supplier")
  */
-class  SupplierController extends AbstractController
+class SupplierController extends AbstractController
 {
     /**
      * @Route("/", name="supplier_index", methods={"GET"})
      */
-
-    public function index(SupplierRepository $supplierRepository):Response
+    public function index(SupplierRepository $supplierRepository): Response
     {
         return $this->render('supplier/index.html.twig', [
             'suppliers' => $supplierRepository->findAll(),
-            ]);
+        ]);
     }
+
     /**
      * @Route("/new", name="supplier_new", methods={"GET","POST"})
      */
@@ -46,6 +47,7 @@ class  SupplierController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
     /**
      * @Route("/{id}", name="supplier_show", methods={"GET"})
      */
@@ -55,6 +57,7 @@ class  SupplierController extends AbstractController
             'supplier' => $supplier,
         ]);
     }
+
     /**
      * @Route("/{id}/edit", name="supplier_edit", methods={"GET","POST"})
      */
@@ -74,6 +77,7 @@ class  SupplierController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
     /**
      * @Route("/{id}", name="supplier_delete", methods={"DELETE"})
      */
@@ -87,5 +91,4 @@ class  SupplierController extends AbstractController
 
         return $this->redirectToRoute('supplier_index');
     }
-
 }

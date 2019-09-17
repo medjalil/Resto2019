@@ -6,8 +6,6 @@ use App\Entity\Budget;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-
 
 class BudgetType extends AbstractType
 {

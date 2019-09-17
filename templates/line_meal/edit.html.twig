@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit LineMeal{% endblock %}
+
+{% block body %}
+    <h1>Edit LineMeal</h1>
+
+    {{ include('line_meal/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('line_meal_index') }}">back to list</a>
+
+    {{ include('line_meal/_delete_form.html.twig') }}
+{% endblock %}

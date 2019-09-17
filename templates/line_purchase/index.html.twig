@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LinePurchase index{% endblock %}
+
+{% block body %}
+    <h1>LinePurchase index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quantity</th>
+                <th>Unit_price</th>
+                <th>Tax</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for line_purchase in line_purchases %}
+            <tr>
+                <td>{{ line_purchase.id }}</td>
+                <td>{{ line_purchase.quantity }}</td>
+                <td>{{ line_purchase.unitPrice }}</td>
+                <td>{{ line_purchase.tax }}</td>
+                <td>
+                    <a href="{{ path('line_purchase_show', {'id': line_purchase.id}) }}">show</a>
+                    <a href="{{ path('line_purchase_edit', {'id': line_purchase.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('line_purchase_new') }}">Create new</a>
+{% endblock %}

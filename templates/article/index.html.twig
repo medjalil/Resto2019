@@ -12,7 +12,6 @@
                 <th>Name</th>
                 <th>Unit</th>
                 <th>Quantity</th>
-                <th>Category</th>
                 <th>Created_at</th>
                 <th>actions</th>
             </tr>
@@ -24,7 +23,6 @@
                 <td>{{ article.name }}</td>
                 <td>{{ article.unit }}</td>
                 <td>{{ article.quantity }}</td>
-                <td>{{ article.category }}</td>
                 <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('article_show', {'id': article.id}) }}">show</a>

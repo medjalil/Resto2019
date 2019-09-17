@@ -15,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class CategoryController extends AbstractController
 {
+
     /**
      * @Route("/", name="category_index", methods={"GET"})
      */

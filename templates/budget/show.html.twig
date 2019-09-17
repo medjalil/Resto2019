@@ -7,18 +7,18 @@
 
     <table class="table">
         <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ budget.id }}</td>
-        </tr>
-        <tr>
-            <th>Year</th>
-            <td>{{ budget.year|date('Y-m-d') }}</td>
-        </tr>
-        <tr>
-            <th>Unit</th>
-            <td>{{ budget.amount }}</td>
-        </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ budget.id }}</td>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <td>{{ budget.year ? budget.year|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>{{ budget.amount }}</td>
+            </tr>
         </tbody>
     </table>
 

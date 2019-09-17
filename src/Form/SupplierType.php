@@ -6,8 +6,6 @@ use App\Entity\Supplier;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-
 
 class SupplierType extends AbstractType
 {
@@ -21,7 +19,7 @@ class SupplierType extends AbstractType
             ->add('phone')
             ->add('address')
             ->add('email')
-
+            ->add('purchase')
         ;
     }
 

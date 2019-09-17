@@ -7,18 +7,18 @@
 
     <table class="table">
         <thead>
-        <tr>
-            <th>Id</th>
-            <th>Year</th>
-            <th>Amount</th>
-            <th>actions</th>
-        </tr>
+            <tr>
+                <th>Id</th>
+                <th>Year</th>
+                <th>Amount</th>
+                <th>actions</th>
+            </tr>
         </thead>
         <tbody>
         {% for budget in budgets %}
             <tr>
                 <td>{{ budget.id }}</td>
-                <td>{{ budget.year|date('Y-m-d') }}</td>
+                <td>{{ budget.year ? budget.year|date('Y-m-d') : '' }}</td>
                 <td>{{ budget.amount }}</td>
                 <td>
                     <a href="{{ path('budget_show', {'id': budget.id}) }}">show</a>
@@ -27,7 +27,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="4">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

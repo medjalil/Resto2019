@@ -6,8 +6,6 @@ use App\Entity\Article;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-
 
 class ArticleType extends AbstractType
 {
@@ -17,6 +15,8 @@ class ArticleType extends AbstractType
             ->add('name')
             ->add('unit')
             ->add('quantity')
+            ->add('created_at')
+            //->add('Category')
             ->add('category',EntityType::class, array(
                 'class' => 'App:Category',
                 'choice_label' => 'name',

@@ -6,8 +6,6 @@ use App\Entity\Institution;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-
 
 class InstitutionType extends AbstractType
 {
@@ -18,9 +16,8 @@ class InstitutionType extends AbstractType
             ->add('office')
             ->add('name')
             ->add('director')
-            ->add('office')
-            ->add('administrator')
             ->add('economist')
+            ->add('administrator')
             ->add('address')
             ->add('city')
             ->add('phone')

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Delivry index{% endblock %}
+
+{% block body %}
+    <h1>Delivry index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Activity</th>
+                <th>Phone</th>
+                <th>Created_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for delivry in delivries %}
+            <tr>
+                <td>{{ delivry.id }}</td>
+                <td>{{ delivry.name }}</td>
+                <td>{{ delivry.activity }}</td>
+                <td>{{ delivry.phone }}</td>
+                <td>{{ delivry.createdAt ? delivry.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('delivry_show', {'id': delivry.id}) }}">show</a>
+                    <a href="{{ path('delivry_edit', {'id': delivry.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('delivry_new') }}">Create new</a>
+{% endblock %}

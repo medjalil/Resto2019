@@ -7,31 +7,29 @@
 
     <table class="table">
         <thead>
-        <tr>
-            <th>Id</th>
-            <th>Company</th>
-            <th>Name</th>
-            <th>Activityity</th>
-            <th>Tax_number</th>
-            <th>phone</th>
-            <th>Address</th>
-            <th>Email</th>
-            <th>id_purchase</th>
-            <th>actions</th>
-        </tr>
+            <tr>
+                <th>Id</th>
+                <th>Company</th>
+                <th>Name</th>
+                <th>Activity</th>
+                <th>Tax_number</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>actions</th>
+            </tr>
         </thead>
         <tbody>
         {% for supplier in suppliers %}
             <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.company }}</td>
-                <td>{{ article.name }}</td>
-                <td>{{ article.activity }}</td>
-                <td>{{ article.tax_number }}</td>
-                <td>{{ article.phone }}</td>
-                <td>{{ article.address }}</td>
-                <td>{{ article.email }}</td>
-                <td>{{ article.purchase.id }}</td>
+                <td>{{ supplier.id }}</td>
+                <td>{{ supplier.company }}</td>
+                <td>{{ supplier.name }}</td>
+                <td>{{ supplier.activity }}</td>
+                <td>{{ supplier.taxNumber }}</td>
+                <td>{{ supplier.phone }}</td>
+                <td>{{ supplier.address }}</td>
+                <td>{{ supplier.email }}</td>
                 <td>
                     <a href="{{ path('supplier_show', {'id': supplier.id}) }}">show</a>
                     <a href="{{ path('supplier_edit', {'id': supplier.id}) }}">edit</a>
@@ -39,7 +37,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="9">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
