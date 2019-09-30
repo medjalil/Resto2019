@@ -27,16 +27,20 @@
             <ul class="nav side-menu">
                 <li><a><i class="fa fa-home"></i> معطيات عامة <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="index.html">المؤسسة</a></li>
-                        <li><a href="index2.html">الميزانية</a></li> 
+                        <li><a href="{{ path('institution_index') }}">المؤسسة</a></li>
+                        <li><a href="{{ path('budget_index') }}">الميزانية</a></li>
                         <li><a href="{{ path('category_index') }}">الاصناف</a></li>
-                        <li><a href="index3.html">المواد</a></li>
-                        <li><a href="index3.html">المزودون</a></li>
+                        <li><a href="{{ path('article_index') }}">المواد</a></li>
+                        <li><a href="{{ path('supplier_index') }}">المزودون</a></li>
+                         <li><a href="{{ path('delivry_index') }}"> تسليم المواد</a></li>
                     </ul>
                 </li>
                 <li><a><i class="fa fa-edit"></i> المشتريات <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                        <li><a href="form.html">قائمة المشتريات</a></li>
+                        {#<li><a href="{{ path('ajout-purchase') }}">قائمة المشتريات</a></li>#}
+
+                        <li><a href="{{ path('purchase_index') }}">قائمة المشتريات</a></li>
+
                         <li><a href="form_advanced.html">الفاتورات</a></li>
                     </ul>
                 </li>

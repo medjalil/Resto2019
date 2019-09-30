@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Entity;
-
+use App\Entity\LinePurchase;
+use App\Entity\Supplier;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -35,19 +36,19 @@ class Purchase
     private $delivry;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Supplier", mappedBy="purchase")
+     * @ORM\OneToMany(targetEntity="App\Entity\LinePurchase", mappedBy="purchase",cascade={"persist"})
+     */
+    private $linePurchase;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Supplier", inversedBy="purchases")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $supplier;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\LinePurchase", mappedBy="purchase")
-     */
-    private $linePurchases;
-
     public function __construct()
     {
-        $this->supplier = new ArrayCollection();
-        $this->linePurchases = new ArrayCollection();
+        $this->linePurchase = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,48 +93,17 @@ class Purchase
     }
 
     /**
-     * @return Collection|Supplier[]
-     */
-    public function getSupplier(): Collection
-    {
-        return $this->supplier;
-    }
-
-    public function addSupplier(Supplier $supplier): self
-    {
-        if (!$this->supplier->contains($supplier)) {
-            $this->supplier[] = $supplier;
-            $supplier->setPurchase($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSupplier(Supplier $supplier): self
-    {
-        if ($this->supplier->contains($supplier)) {
-            $this->supplier->removeElement($supplier);
-            // set the owning side to null (unless already changed)
-            if ($supplier->getPurchase() === $this) {
-                $supplier->setPurchase(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|LinePurchase[]
      */
-    public function getLinePurchases(): Collection
+    public function getLinePurchase(): Collection
     {
-        return $this->linePurchases;
+        return $this->linePurchase;
     }
 
     public function addLinePurchase(LinePurchase $linePurchase): self
     {
-        if (!$this->linePurchases->contains($linePurchase)) {
-            $this->linePurchases[] = $linePurchase;
+        if (!$this->linePurchase->contains($linePurchase)) {
+            $this->linePurchase[] = $linePurchase;
             $linePurchase->setPurchase($this);
         }
 
@@ -142,8 +112,8 @@ class Purchase
 
     public function removeLinePurchase(LinePurchase $linePurchase): self
     {
-        if ($this->linePurchases->contains($linePurchase)) {
-            $this->linePurchases->removeElement($linePurchase);
+        if ($this->linePurchase->contains($linePurchase)) {
+            $this->linePurchase->removeElement($linePurchase);
             // set the owning side to null (unless already changed)
             if ($linePurchase->getPurchase() === $this) {
                 $linePurchase->setPurchase(null);
@@ -156,5 +126,17 @@ class Purchase
     {
         // TODO: Implement __toString() method.
         return  $this-> number;
+    }
+
+    public function getSupplier(): ?Supplier
+    {
+        return $this->supplier;
+    }
+
+    public function setSupplier(?Supplier $supplier): self
+    {
+        $this->supplier = $supplier;
+
+        return $this;
     }
 }

@@ -6,6 +6,10 @@
                 <source>Invalid credentials.</source>
                 <target>كلمة المرور التي أدخلتها غير صالحة</target>
             </trans-unit>
+             <trans-unit id="show">
+                            <source>show</source>
+                            <target>اظهار</target>
+             </trans-unit>
         </body>
     </file>
 </xliff>

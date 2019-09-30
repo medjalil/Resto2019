@@ -19,7 +19,7 @@ class SupplierType extends AbstractType
             ->add('phone')
             ->add('address')
             ->add('email')
-            ->add('purchase')
+           // ->add('purchase')
         ;
     }
 

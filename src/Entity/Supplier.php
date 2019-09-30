@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -52,10 +54,14 @@ class Supplier
     private $email;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Purchase", inversedBy="supplier")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity="App\Entity\Purchase", mappedBy="supplier")
      */
-    private $purchase;
+    private $purchases;
+
+    public function __construct()
+    {
+        $this->purchases = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -146,15 +152,38 @@ class Supplier
         return $this;
     }
 
-    public function getPurchase(): ?Purchase
+    /**
+     * @return Collection|Purchase[]
+     */
+    public function getPurchases(): Collection
     {
-        return $this->purchase;
+        return $this->purchases;
     }
 
-    public function setPurchase(?Purchase $purchase): self
+    public function addPurchase(Purchase $purchase): self
     {
-        $this->purchase = $purchase;
+        if (!$this->purchases->contains($purchase)) {
+            $this->purchases[] = $purchase;
+            $purchase->setSupplier($this);
+        }
 
         return $this;
     }
+
+    public function removePurchase(Purchase $purchase): self
+    {
+        if ($this->purchases->contains($purchase)) {
+            $this->purchases->removeElement($purchase);
+            // set the owning side to null (unless already changed)
+            if ($purchase->getSupplier() === $this) {
+                $purchase->setSupplier(null);
+            }
+        }
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->company;   
+      }
 }

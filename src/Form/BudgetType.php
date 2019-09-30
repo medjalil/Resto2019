@@ -14,6 +14,7 @@ class BudgetType extends AbstractType
         $builder
             ->add('year')
             ->add('amount')
+            ->add('name')
         ;
     }
 

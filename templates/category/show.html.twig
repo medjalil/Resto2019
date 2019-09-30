@@ -1,35 +1,4 @@
-{#
-{% extends 'base.html.twig' %}
 
-{% block title %}Category{% endblock %}
-
-{% block body %}
-    <h1>Category</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ category.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ category.name }}</td>
-            </tr>
-            <tr>
-                <th>Created_at</th>
-                <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('category_index') }}">back to list</a>
-
-    <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
-
-    {{ include('category/_delete_form.html.twig') }}
-{% endblock %}
-#}
 {% extends 'base.html.twig' %}
 
 {% block title %} {{ app.user.email|upper }} {% endblock %}
@@ -63,7 +32,6 @@
 
                 <div class="clearfix"></div>
                 <div class="row">
-
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
@@ -85,44 +53,6 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
-                                {#<p class="text-muted font-13 m-b-30">
-                                    <a href="{{ path('category_new') }}" class="btn btn-success">Create new</a>
-                                </p>#}
-                               {# <table id="datatable-buttons" class="table table-striped table-bordered">
-
-
-                                    <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <td>{{ category.id }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Name</th>
-                                        <td>{{ category.name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Created_at</th>
-                                        <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-
-                                            <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                                            <td>
-                                                <a href="{{ path('category_index') }}" class="btn btn-primary">back to list</a>
-
-                                                <a href="{{ path('category_edit', {'id': category.id}) }}" class="btn btn-warning">edit</a>
-
-                                                {{ include('category/_delete_form.html.twig') }}
-
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>#}
-                                <h1>Category</h1>
-
                                 <table class="table">
                                     <tbody>
                                     <tr>
